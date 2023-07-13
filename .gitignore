@@ -1,0 +1,11 @@
+# System files
+.DS_Store
+
+# node
+node_modules/
+
+# clasp
+.clasp.json
+
+# variables
+.variables.js
