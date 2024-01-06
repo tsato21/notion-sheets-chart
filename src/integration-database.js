@@ -14,13 +14,15 @@ class ChartManager {
      * @param {number} row - The row where the chart is located.
      * @param {number} column - The column where the chart is located.
      */
-    constructor(sheetNameDatabase,tableId,itemName,categoryName,payName,chartName) {
+    constructor(sheetNameDatabase,tableId,itemName,categoryName,payName,chartName,row,column) {
         this.sheetDataBase = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetNameDatabase);
         this.tableId = tableId;
         this.itemName = itemName;
         this.categoryName = categoryName;
         this.payName = payName;
         this.chartName = chartName;
+        this.row = row;
+        this.column = column;
     }
       
       /**
@@ -238,16 +240,16 @@ class ChartManager {
   Instances to manage the pie chart for target databases with trigger when the spreadsheet is opened
 */
 function manageChart_1(){
-  const chart_1 = new ChartManager (sheetName_1,tableId_1,item_1,category_1,monthlyPay_1,chartName_1);
+  const chart_1 = new ChartManager (sheetName_1,tableId_1,item_1,category_1,monthlyPay_1,chartName_1,2,1);
   chart_1.createPieChart();
 }
 
 function manageChart_2(){
-  const chart_2 = new ChartManager (sheetName_2,tableId_2,item_2,category_2,pay_2,chartName_2);
+  const chart_2 = new ChartManager (sheetName_2,tableId_2,item_2,category_2,pay_2,chartName_2,2,7);
   chart_2.createPieChart();
 }
 
 function manageChart_3(){
-  const chart_3 = new ChartManager (sheetName_3,tableId_3,item_3,category_3,pay_3,chartName_3);
+  const chart_3 = new ChartManager (sheetName_3,tableId_3,item_3,category_3,pay_3,chartName_3,1,18);
   chart_3.createPieChart();
 }
