@@ -8,4 +8,4 @@ node_modules/
 .clasp.json
 
 # variables
-.variables.js
+variables.js

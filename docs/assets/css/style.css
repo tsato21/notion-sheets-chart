@@ -1,0 +1,91 @@
+body {
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .header, .footer {
+    padding-left: 0;
+  }
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+.resize-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sidebar {
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 230px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.content {
+  margin-left: 240px;
+  padding: 1rem;
+}
+
+.list-group-item {
+  background-color: #f8f9fa;
+}
+
+.container-img, .image-caption {
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0;
+}
+
+.section-header {
+  padding-top: 1rem;
+}
+
+.header {
+  padding-left: 250px;
+}
+
+.footer {
+  padding-left: 250px;
+}
+
+#table-of-contents ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#table-of-contents li {
+  padding: 0.4em 0;
+}
+
+#table-of-contents a:hover {
+  color: #00008B;
+}

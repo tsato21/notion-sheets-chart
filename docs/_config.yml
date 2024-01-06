@@ -1,0 +1,4 @@
+# Site settings
+theme: jekyll-theme-primer
+title: 'Integrate Notion Database with Spreadsheet'
+description: 'This project offers a seamless integration between Notion databases and Google Sheets to automatically generate insightful pie charts.'
