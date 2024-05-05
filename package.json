@@ -1,16 +1,38 @@
 {
-  "name": "data-integ-notion",
+  "name": "notion-sheets-integrator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Integrates Notion databases with Google Sheets, and generate dynamic pie charts, providing a powerful and intuitive way to visualize and analyze data.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write src/**/*"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsato21/notion-sheets-integrator"
+  },
+  "keywords": [
+    "google-apps-script",
+    "gas",
+    "clasp",
+    "github-page"
+  ],
+  "author": "taiga21",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tsato21/notion-sheets-integrator/issues"
+  },
+  "homepage": "https://tsato21.github.io/gas-tools/each-tool/notion-sheets-integrator",
   "devDependencies": {
-    "@google/clasp": "^2.3.0",
-    "@types/google-apps-script": "^1.0.65",
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^1.0.64",
+    "@types/jest": "^29.5.2",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"
   }
 }

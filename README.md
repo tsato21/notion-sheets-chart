@@ -1,1 +1,2 @@
-# integration-database
+# notion-sheets-tasker
+Integrates Notion databases with Google Sheets, and generate dynamic pie charts, providing a powerful and intuitive way to visualize and analyze data. You can find the details at [NotionSheets Tasker](https://tsato21.github.io/gas-tools/each-tool/notion-sheets-integrator)
