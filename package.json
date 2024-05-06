@@ -1,5 +1,5 @@
 {
-  "name": "notion-sheets-integrator",
+  "name": "notion-sheets-chart",
   "version": "1.0.0",
   "description": "Integrates Notion databases with Google Sheets, and generate dynamic pie charts, providing a powerful and intuitive way to visualize and analyze data.",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsato21/notion-sheets-integrator"
+    "url": "git+https://github.com/tsato21/notion-sheets-chart"
   },
   "keywords": [
     "google-apps-script",
@@ -18,9 +18,9 @@
   "author": "taiga21",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/tsato21/notion-sheets-integrator/issues"
+    "url": "https://github.com/tsato21/notion-sheets-chart/issues"
   },
-  "homepage": "https://tsato21.github.io/gas-tools/each-tool/notion-sheets-integrator",
+  "homepage": "https://tsato21.github.io/gas-tools/each-tool/notion-sheets-chart",
   "devDependencies": {
     "@google/clasp": "^2.4.2",
     "@types/google-apps-script": "^1.0.64",
