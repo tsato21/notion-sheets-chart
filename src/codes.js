@@ -3,16 +3,16 @@
  *
 */
 class ChartManager {
-     /**
-     * @constructor
-     * @param {string} sheetNameDatabase - The name of the sheet where the database is located.
-     * @param {string} tableId - The ID of the table.
-     * @param {string} itemName - The name of the item.
-     * @param {string} categoryName - The name of the category.
-     * @param {string} payName - The name of the pay.
-     * @param {string} chartName - The name of the chart.
-     * @param {number} row - The row where the chart is located.
-     * @param {number} column - The column where the chart is located.
+    /**
+     * Constructs an instance of the ChartManager class, initializing properties for managing data from Notion and creating charts in Google Sheets.
+     * @param {string} sheetNameDatabase - Name of the Google Sheet containing the database.
+     * @param {string} tableId - ID of the Notion table.
+     * @param {string} itemName - Name of the item property in Notion.
+     * @param {string} categoryName - Name of the category property in Notion.
+     * @param {string} payName - Name of the payment property in Notion.
+     * @param {string} chartName - Name of the chart to be created in Google Sheets.
+     * @param {number} row - Row number in Google Sheets where the chart will be placed.
+     * @param {number} column - Column number in Google Sheets where the chart will be placed.
      */
     constructor(sheetNameDatabase,tableId,itemName,categoryName,payName,chartName,row,column) {
         this.sheetDataBase = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetNameDatabase);
@@ -26,11 +26,10 @@ class ChartManager {
     }
       
       /**
-       * Private method to input information from the designated database in Notion
-       * Used in createPieChart method
-       * @return {object} sumDataRange - The range of the data to be used for the chart.
-      */
-      inputDatabase_() {
+       * Fetches and processes data from Notion database, then inputs it into the designated Google Sheets. It also prepares data for chart creation.
+       * @return {object} sumDataRange - The range of data in Google Sheets used for the chart.
+       */
+      fetchAndProcessNotionData() {
         // console.log(this.tableId,this.itemName,this.categoryName);
         let url = `https://api.notion.com/v1/databases/${this.tableId}/query`;
         let options = {
@@ -72,8 +71,8 @@ class ChartManager {
                 category = results[i].properties[this.categoryName]?.select?.name;
                 break;
             case 'relation':
-                // console.log("Data type is select");
-                category = this.getRelationValue_(results[i],this.categoryName);
+                // console.log(`Data type is relation`);
+                category = this.retrieveRelationValue(results[i],this.categoryName);
                 break;
             default:
                 // console.log("Data type is undefined, probably data is not input");
@@ -149,13 +148,12 @@ class ChartManager {
         }
 
       /**
-       * Private method to to retrieve value of the relation of the database in Notion
-       * Used in inputDatabase_ method
-       * @param {object} result - The result of the database.
-       * @param {string} relationName - The name of the relation.
-       * @return {Array} pageContents - The value of the relation.
-      */
-      getRelationValue_(result,relationName) {
+       * Retrieves and processes the relation values from a Notion database entry.
+       * @param {object} result - A single entry from the Notion database results.
+       * @param {string} relationName - The name of the relation property in the Notion database.
+       * @return {Array} - The processed value(s) of the relation.
+       */
+      retrieveRelationValue(result,relationName) {
           const relationIds = result.properties[relationName].relation; // Makes the variable name plural in a case that there are multiple categories for one item
           switch (relationIds){
             case 'undefined':
@@ -188,9 +186,11 @@ class ChartManager {
           }
       }
 
-      //method to create pie chart from that database in Notion on the sheet
-      createPieChart() {
-        const sumDataRange = this.inputDatabase_();
+      /**
+       * Generates or updates a pie chart in Google Sheets based on the processed data from the Notion database.
+       */
+      generatePieChart() {
+        const sumDataRange = this.fetchAndProcessNotionData();
 
         //Checks chart creation status and do a different process depending on whether there is a chart or not
         const sheetChart = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetNameChart);
@@ -236,20 +236,10 @@ class ChartManager {
     }
 }
 
-/*
-  Instances to manage the pie chart for target databases with trigger when the spreadsheet is opened
-*/
+/**
+ * Trigger function to manage chart creation or updating. Initializes a ChartManager instance and generates a pie chart based on the specified parameters.
+ */
 function manageChart_1(){
   const chart_1 = new ChartManager (sheetName_1,tableId_1,item_1,category_1,monthlyPay_1,chartName_1,2,1);
-  chart_1.createPieChart();
-}
-
-function manageChart_2(){
-  const chart_2 = new ChartManager (sheetName_2,tableId_2,item_2,category_2,pay_2,chartName_2,2,7);
-  chart_2.createPieChart();
-}
-
-function manageChart_3(){
-  const chart_3 = new ChartManager (sheetName_3,tableId_3,item_3,category_3,pay_3,chartName_3,1,18);
-  chart_3.createPieChart();
+  chart_1.generatePieChart();
 }
